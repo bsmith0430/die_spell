@@ -24,9 +24,11 @@ class Player(object):
         self.locked_dice = locked_dice
         rolls = []
         total_rolls = base_dice + additional_dice - len(locked_dice)
+
         if self.rolls_remaining > 0:
             for _ in range(total_rolls):
                 dice_roll = random.randint(1, 6)
                 rolls.append(dice_roll)
                 self.rolls_remaining -= 1
-                print(f"{self.name} rolled a {dice_roll}")
+            rolls.sort()
+            print(f"{self.name} rolled {rolls}")
