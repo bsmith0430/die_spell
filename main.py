@@ -40,3 +40,6 @@ while game_is_running:
 
         if user_input == "roll":
             player.roll(player.base_dice, player.additional_dice, player.rolls_remaining, player.status, player.locked_dice)
+
+        if user_input == "action":
+            player.player_actions(player.actions_available)

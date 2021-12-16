@@ -37,3 +37,16 @@ class Player(object):
                 self.rolls_remaining -= 1
             current_rolls.sort()
             print(f"{self.name} rolled {current_rolls}")
+
+    def action_menu(self, actions_available):
+        print(f"{self.name}'s actions: {actions_available}")
+
+        if len(actions_available) == 0:
+            print(f"{self.name} has no actions available")
+
+        if len(actions_available) > 0:
+            action_value = input("What action do you want to use? ")
+
+            if action_value in actions_available:
+                print(f"{self.name} used {action_value}")
+                self.actions_available.remove(action_value)
