@@ -21,10 +21,6 @@ for _ in range(number_of_players):
 
 game_is_running = True
 while game_is_running:
-    if keyboard.is_pressed('q'):
-        game_is_running = False
-        print('Thanks for playing!')
-        break
 
     for player in player_names:
         player = Player(player_names[player], player_health_points, base_dice, additional_dice,
