@@ -26,7 +26,7 @@ while game_is_running:
 
     for player in player_names:
         player = Player(player_names[player], player_health_points, base_dice, additional_dice,
-                        status, rolls_remaining, actions_available, locked_dice, current_rolls)
+                        status, rolls_remaining, actions_available, locked_dice, current_rolls, phase)
 
         if player_health_points <= 0:
             print(f"{player_names[player]} has lost the game")
@@ -34,7 +34,7 @@ while game_is_running:
             break
 
         user_input = input("What do you want to do? ")
-        if user_input == "q":
+        if user_input == "quit" or user_input == "q":
             game_is_running = False
             print('Thanks for playing!')
             break
@@ -43,4 +43,4 @@ while game_is_running:
             player.roll(player.base_dice, player.additional_dice, player.rolls_remaining, player.status, player.locked_dice)
 
         if user_input == "action":
-            player.player_actions(player.actions_available)
+            player.action_menu(player.actions_available)

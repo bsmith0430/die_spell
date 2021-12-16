@@ -52,6 +52,12 @@ class Player(object):
                 # Needs to move us to the correct menu
                 # Need to flesh this out more
                 phase = self.phase
-            if action_value in actions_available:
-                print(f"{self.name} used {action_value}")
-                self.actions_available.remove(action_value)
+
+            try:
+                action_value = int(action_value)
+
+                if action_value in actions_available:
+                    print(f"{self.name} used {action_value}")
+                    self.actions_available.remove(action_value)
+            except ValueError:
+                print("Invalid input")
