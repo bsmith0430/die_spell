@@ -46,7 +46,10 @@ class Player(object):
 
         if len(actions_available) > 0:
             action_value = input("What action do you want to use? ")
-
+            if action_value == "back":
+                # Needs to move us to the correct menu
+                # Need to flesh this out more
+                phase = self.phase
             if action_value in actions_available:
                 print(f"{self.name} used {action_value}")
                 self.actions_available.remove(action_value)

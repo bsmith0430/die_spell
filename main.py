@@ -12,6 +12,7 @@ rolls_remaining = 3
 locked_dice = []
 actions_available = []
 current_rolls = []
+phase = "Upkeep"
 
 
 player_names = {}
