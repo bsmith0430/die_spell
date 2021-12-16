@@ -11,7 +11,8 @@ class Player(object):
     actions_available = []
 
     def __init__(self, name, health_points, base_dice,
-                additional_dice, status, rolls_remaining, actions_available):
+                additional_dice, status, rolls_remaining, actions_available,
+                locked_dice, current_rolls):
         self.name = name
         self.health_points = health_points
         self.base_dice = base_dice
@@ -19,17 +20,20 @@ class Player(object):
         self.status = status
         self.rolls_remaining = rolls_remaining
         self.actions = actions_available
-
-    def roll(self, base_dice, additional_dice, rolls_remaining, status, locked_dice):
         self.locked_dice = locked_dice
-        rolls = []
+        self.current_rolls = current_rolls
+
+    def roll(self, base_dice, additional_dice,
+            rolls_remaining, status, locked_dice, current_rolls):
+
+
         total_rolls = base_dice + additional_dice - len(locked_dice)
 
         if self.rolls_remaining > 0:
             # Rolls the dice
             for _ in range(total_rolls):
                 dice_roll = random.randint(1, 6)
-                rolls.append(dice_roll)
+                current_rolls.append(dice_roll)
                 self.rolls_remaining -= 1
-            rolls.sort()
-            print(f"{self.name} rolled {rolls}")
+            current_rolls.sort()
+            print(f"{self.name} rolled {current_rolls}")
