@@ -9,10 +9,11 @@ class Player(object):
     rolls_remaining = 0
     locked_dice = []
     actions_available = []
+    phase = ""
 
     def __init__(self, name, health_points, base_dice,
                 additional_dice, status, rolls_remaining, actions_available,
-                locked_dice, current_rolls):
+                locked_dice, current_rolls, phase):
         self.name = name
         self.health_points = health_points
         self.base_dice = base_dice
@@ -22,6 +23,7 @@ class Player(object):
         self.actions = actions_available
         self.locked_dice = locked_dice
         self.current_rolls = current_rolls
+        self.phase = phase
 
     def roll(self, base_dice, additional_dice,
             rolls_remaining, status, locked_dice, current_rolls):
