@@ -11,6 +11,7 @@ status = "No status"
 rolls_remaining = 3
 locked_dice = []
 actions_available = []
+current_rolls = []
 
 
 player_names = {}
@@ -24,7 +25,7 @@ while game_is_running:
 
     for player in player_names:
         player = Player(player_names[player], player_health_points, base_dice, additional_dice,
-                        status, rolls_remaining, actions_available)
+                        status, rolls_remaining, actions_available, locked_dice, current_rolls)
 
         if player_health_points <= 0:
             print(f"{player_names[player]} has lost the game")

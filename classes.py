@@ -26,6 +26,7 @@ class Player(object):
         total_rolls = base_dice + additional_dice - len(locked_dice)
 
         if self.rolls_remaining > 0:
+            # Rolls the dice
             for _ in range(total_rolls):
                 dice_roll = random.randint(1, 6)
                 rolls.append(dice_roll)
