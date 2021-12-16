@@ -9,11 +9,11 @@ class Player(object):
     rolls_remaining = 0
     locked_dice = []
     actions_available = []
-    phase = ""
+    state = ""
 
     def __init__(self, name, health_points, base_dice,
                 additional_dice, status, rolls_remaining, actions_available,
-                locked_dice, current_rolls, phase):
+                locked_dice, current_rolls, state):
         self.name = name
         self.health_points = health_points
         self.base_dice = base_dice
@@ -23,7 +23,7 @@ class Player(object):
         self.actions = actions_available
         self.locked_dice = locked_dice
         self.current_rolls = current_rolls
-        self.phase = phase
+        self.state = state
 
     def roll(self, base_dice, additional_dice,
             rolls_remaining, status, locked_dice, current_rolls):
@@ -51,7 +51,7 @@ class Player(object):
             if action_value == "back":
                 # Needs to move us to the correct menu
                 # Need to flesh this out more
-                phase = self.phase
+                state = self.state
 
             try:
                 action_value = int(action_value)
