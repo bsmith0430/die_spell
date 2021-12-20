@@ -39,6 +39,19 @@ class Player(object):
                 self.rolls_remaining -= 1
             current_rolls.sort()
             print(f"{self.name} rolled {current_rolls}")
+    
+    def build_spell(self, locked_dice, state):
+        spell = {}
+
+        if state == "Build":
+
+            for dice in locked_dice:
+                if dice in spell:
+                    spell[dice] += 1
+                else:
+                    spell[dice] = 1
+            
+            print(spell)
 
     def action_menu(self, actions_available):
         print(f"{self.name}'s actions: {actions_available}")

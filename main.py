@@ -12,7 +12,7 @@ rolls_remaining = 3
 locked_dice = []
 actions_available = []
 current_rolls = []
-state = "Upkeep"
+state = "Build" # Upkeep, Main, Build, Resolution
 
 
 player_names = {}
@@ -40,7 +40,11 @@ while game_is_running:
             break
 
         if user_input == "roll":
-            player.roll(player.base_dice, player.additional_dice, player.rolls_remaining, player.status, player.locked_dice)
+            player.roll(player.base_dice, player.additional_dice, player.rolls_remaining, player.status, 
+                        player.locked_dice, player.current_rolls)
+
+        if user_input == "build spell":
+            player.build_spell(player.status, player.locked_dice)
 
         if user_input == "action":
             player.action_menu(player.actions_available)
