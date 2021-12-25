@@ -33,17 +33,7 @@ while game_is_running:
             break
 
         user_input = input("What do you want to do? ")
-        # if user_input == "quit" or user_input == "q":
-        #     game_is_running = False
-        #     print('Thanks for playing!')
-        #     break
-
-        # if user_input == "roll":
-        #     player.roll(player.base_dice, player.additional_dice, player.rolls_remaining, player.status, player.locked_dice, player.current_rolls)
-
-        # if user_input == "action":
-        #     player.action_menu(player.actions_available)
-
+        
         match user_input:
             case "quit":
                 game_is_running = False
