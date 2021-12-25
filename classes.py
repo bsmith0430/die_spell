@@ -39,14 +39,14 @@ class Player(object):
             current_rolls.sort()
             print(f"{self.name} rolled {current_rolls}")
 
-    def lock(self, current_rolls, locked_dice):
-        
-        if len(self.current_rolls) > 0:
-            is_locking = True
+    def lock(self, current_rolls, locked_dice):      
+        is_locking = True
 
-            while is_locking:
+        while is_locking:
+            if len(current_rolls) > 0:
                 try:
-                    print(current_rolls)
+                    print(f"Unlocked dice: {self.current_rolls}")
+                    print(f"Locked dice: {self.locked_dice}")
                     dice_to_lock = int(input("Which dice do you want to lock? Hint: Use index values to lock dice and -1 to stop locking dice: "))
                     if dice_to_lock == -1:
                         is_locking = False
