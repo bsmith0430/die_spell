@@ -43,7 +43,7 @@ class Player(object):
         is_locking = True
 
         while is_locking:
-            if len(current_rolls) > 0:
+            if len(self.current_rolls) > 0:
                 try:
                     print(f"Unlocked dice: {self.current_rolls}")
                     print(f"Locked dice: {self.locked_dice}")
@@ -55,7 +55,9 @@ class Player(object):
                         current_rolls.remove(current_rolls[dice_to_lock])
                 except ValueError:
                     print("Invalid input")
-
+            if len(self.current_rolls) == 0:
+                print(f"{self.name} has no dice to lock")
+                is_locking = False
 
     def action_menu(self, actions_available):
         print(f"{self.name}'s actions: {actions_available}")
