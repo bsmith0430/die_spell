@@ -4,7 +4,7 @@ import keyboard
 # Game variables
 number_of_players = int(input("How many players?: "))
 
-player_health_points = number_of_players * 10
+player_health_points = 30
 base_dice = 5
 additional_dice = 0
 status = "No status"
@@ -13,7 +13,6 @@ locked_dice = []
 actions_available = []
 current_rolls = []
 state = "Upkeep"
-
 
 player_names = {}
 for _ in range(number_of_players):

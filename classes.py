@@ -28,7 +28,6 @@ class Player(object):
     def roll(self, base_dice, additional_dice,
             rolls_remaining, status, locked_dice, current_rolls):
 
-
         total_rolls = base_dice + additional_dice - len(locked_dice)
 
         if self.rolls_remaining > 0:
@@ -39,6 +38,24 @@ class Player(object):
                 self.rolls_remaining -= 1
             current_rolls.sort()
             print(f"{self.name} rolled {current_rolls}")
+
+    def lock(self, current_rolls, locked_dice):
+        
+        if len(self.current_rolls) > 0:
+            is_locking = True
+
+            while is_locking:
+                try:
+                    print(current_rolls)
+                    dice_to_lock = int(input("Which dice do you want to lock? Hint: Use index values to lock dice and -1 to stop locking dice: "))
+                    if dice_to_lock == -1:
+                        is_locking = False
+                    if dice_to_lock in range(len(current_rolls)):
+                        locked_dice.append(current_rolls[dice_to_lock])
+                        current_rolls.remove(current_rolls[dice_to_lock])
+                except ValueError:
+                    print("Invalid input")
+
 
     def action_menu(self, actions_available):
         print(f"{self.name}'s actions: {actions_available}")
