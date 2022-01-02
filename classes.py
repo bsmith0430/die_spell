@@ -11,9 +11,18 @@ class Player(object):
     actions_available = []
     state = ""
 
-    def __init__(self, name, health_points, base_dice,
-                additional_dice, status, rolls_remaining, actions_available,
-                locked_dice, current_rolls, state):
+    def __init__(self,
+                name,
+                health_points, 
+                base_dice,
+                additional_dice,
+                status, 
+                rolls_remaining, 
+                actions_available,
+                locked_dice, 
+                current_rolls, 
+                state):
+
         self.name = name
         self.health_points = health_points
         self.base_dice = base_dice
@@ -25,9 +34,13 @@ class Player(object):
         self.current_rolls = current_rolls
         self.state = state
 
-    def roll(self, base_dice, additional_dice,
-            rolls_remaining, status, locked_dice, current_rolls):
-
+    def roll(self, 
+            base_dice, 
+            additional_dice,
+            rolls_remaining, 
+            status, 
+            locked_dice, 
+            current_rolls):
 
         total_rolls = base_dice + additional_dice - len(locked_dice)
 
@@ -40,7 +53,10 @@ class Player(object):
             current_rolls.sort()
             print(f"{self.name} rolled {current_rolls}")
     
-    def build_spell(self, locked_dice, state):
+    def build_spell(self, 
+                    locked_dice, 
+                    state):
+        
         spell = {}
 
         if state == "Build":
@@ -53,7 +69,9 @@ class Player(object):
             
             print(spell)
 
-    def action_menu(self, actions_available):
+    def action_menu(self, 
+                    actions_available):
+
         print(f"{self.name}'s actions: {actions_available}")
 
         if len(actions_available) == 0:
