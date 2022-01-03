@@ -11,9 +11,18 @@ class Player(object):
     actions_available = []
     current_game_phase = ""
 
-    def __init__(self, name, health_points, base_dice,
-                additional_dice, status, rolls_remaining, actions_available,
-                locked_dice, current_rolls, current_game_phase):
+    def __init__(self,
+                name,
+                health_points, 
+                base_dice,
+                additional_dice,
+                status, 
+                rolls_remaining, 
+                actions_available,
+                locked_dice, 
+                current_rolls, 
+                current_game_phase):
+
         self.name = name
         self.health_points = health_points
         self.base_dice = base_dice
@@ -25,8 +34,13 @@ class Player(object):
         self.current_rolls = current_rolls
         self.current_game_phase = current_game_phase
 
-    def roll(self, base_dice, additional_dice,
-            rolls_remaining, status, locked_dice, current_rolls):
+    def roll(self, 
+            base_dice, 
+            additional_dice,
+            rolls_remaining, 
+            status, 
+            locked_dice, 
+            current_rolls):
 
         total_rolls = base_dice + additional_dice - len(locked_dice)
 
@@ -38,8 +52,28 @@ class Player(object):
                 self.rolls_remaining -= 1
             current_rolls.sort()
             print(f"{self.name} rolled {current_rolls}")
+    
+    def build_spell(self, 
+                    locked_dice, 
+                    state):
+        
+        spell = {}
 
-    def lock(self, current_rolls, locked_dice):      
+        if state == "Build":
+
+            for dice in locked_dice:
+                if dice in spell:
+                    spell[dice] += 1
+                else:
+                    spell[dice] = 1
+            
+            print(spell)
+
+
+    def lock(self, 
+            current_rolls, 
+            locked_dice):      
+        
         is_locking = True
 
         while is_locking:
@@ -59,7 +93,9 @@ class Player(object):
                 print(f"{self.name} has no dice to lock")
                 is_locking = False
 
-    def action_menu(self, actions_available):
+    def action_menu(self, 
+                    actions_available):
+                    
         print(f"{self.name}'s actions: {actions_available}")
 
         if len(actions_available) == 0:
