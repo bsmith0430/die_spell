@@ -24,8 +24,18 @@ game_is_running = True
 while game_is_running:
 
     for player in player_names:
-        player = Player(player_names[player], player_health_points, base_dice, additional_dice,
-                        status, rolls_remaining, actions_available, locked_dice, current_rolls, current_game_phase)
+        player = Player(
+            player_names[player], 
+            player_health_points, 
+            base_dice, 
+            additional_dice,
+            status, 
+            rolls_remaining, 
+            actions_available, 
+            locked_dice, 
+            current_rolls, 
+            current_game_phase
+        )
 
         if player_health_points <= 0:
             print(f"{player_names[player]} has lost the game")
@@ -40,8 +50,20 @@ while game_is_running:
                 print('Thanks for playing!')
                 break
             case "roll":
-                player.roll(player.base_dice, player.additional_dice, player.rolls_remaining, player.status, player.locked_dice, player.current_rolls)
+                player.roll(
+                    player.base_dice, 
+                    player.additional_dice, 
+                    player.rolls_remaining, 
+                    player.status, 
+                    player.locked_dice, 
+                    player.current_rolls
+            )
             case "action":
-                player.action_menu(player.actions_available)
+                player.action_menu(
+                    player.actions_available
+            )
             case "lock":
-                player.lock(player.current_rolls, player.locked_dice)
+                    player.lock(
+                    player.current_rolls, 
+                    player.locked_dice
+            )
