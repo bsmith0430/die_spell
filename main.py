@@ -37,10 +37,15 @@ while game_is_running:
             current_game_phase
         )
 
-        if player_health_points <= 0:
+        if player.player_health_points <= 0:
             print(f"{player_names[player]} has lost the game")
-            game_is_running = False
-            break
+            del player_names[player]
+            
+            if len(player_names) == 1:
+                print(f"{player_names[player]} has won the game")
+                game_is_running = False
+                break
+            
 
         user_input = input("What do you want to do? ")
         
