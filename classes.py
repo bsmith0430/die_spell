@@ -49,13 +49,16 @@ class Player(object):
         total_rolls = base_dice + additional_dice - len(locked_dice)
 
         if self.rolls_remaining > 0:
+            current_rolls.clear()
             # Rolls the dice
             for _ in range(total_rolls):
                 dice_roll = random.randint(1, 6)
                 current_rolls.append(dice_roll)
-                self.rolls_remaining -= 1
+            self.rolls_remaining -= 1
             current_rolls.sort()
             print(f"{self.name} rolled {current_rolls}")
+            print(f"{self.name} has {self.rolls_remaining} rolls remaining")
+            
     
     def build_spell(
             self, 

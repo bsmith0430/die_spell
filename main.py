@@ -1,4 +1,5 @@
 from classes import Player
+from utils import pre_roll_phase_input, roll_phase_input, spell_building_phase_input, spell_casting_phase_input
 import keyboard
 
 # Game variables
@@ -12,7 +13,7 @@ rolls_remaining = 3
 locked_dice = []
 actions_available = []
 current_rolls = []
-current_game_phase = "Upkeep"
+current_game_phase = "rolling"
 
 player_names = {}
 for _ in range(number_of_players):
@@ -22,6 +23,19 @@ for _ in range(number_of_players):
 
 game_is_running = True
 while game_is_running:
+
+    if keyboard.read_key() == 'esc':
+        user_input = input("Are you sure you would like to quit? (y/n): ")
+        try:
+            if user_input == "y":
+                game_is_running = False
+                print("Thanks for playing!")
+                break
+            
+            if user_input == "n":
+                continue
+        except:
+            print("Please enter a valid input.")
 
     for player in player_names:
         player = Player(
@@ -37,38 +51,16 @@ while game_is_running:
             current_game_phase
         )
 
-        if player.player_health_points <= 0:
+        if player_health_points <= 0:
             print(f"{player_names[player]} has lost the game")
             del player_names[player]
-            
-            if len(player_names) == 1:
-                print(f"{player_names[player]} has won the game")
-                game_is_running = False
-                break
-            
 
-        user_input = input("What do you want to do? ")
+        if len(player_names) == 1:
+            print(f"{player_names[player]} has won the game")
+            game_is_running = False
+            break
+            
+        while current_game_phase == "rolling":
+            roll_phase_input(player)
+            
         
-        match user_input:
-            case "quit":
-                game_is_running = False
-                print('Thanks for playing!')
-                break
-            case "roll":
-                player.roll(
-                    player.base_dice, 
-                    player.additional_dice, 
-                    player.rolls_remaining, 
-                    player.status, 
-                    player.locked_dice, 
-                    player.current_rolls
-            )
-            case "action":
-                player.action_menu(
-                    player.actions_available
-            )
-            case "lock":
-                    player.lock(
-                    player.current_rolls, 
-                    player.locked_dice
-            )
