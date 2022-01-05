@@ -25,7 +25,7 @@ def roll_phase_input(player):
                 player.current_rolls, 
                 player.locked_dice
         )
-
+        
 def spell_building_phase_input():
     pass
 

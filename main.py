@@ -39,7 +39,7 @@ while game_is_running:
             current_game_phase
         )
 
-        if player_health_points <= 0:
+        if player.player_health_points <= 0:
             print(f"{player_names[player]} has lost the game")
             del player_names[player]
 

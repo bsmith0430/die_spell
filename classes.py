@@ -2,7 +2,7 @@ import random
 class Player(object):
     # Game variables
     name = ""
-    health_points = 0
+    player_health_points = 0
     base_dice = 0
     additional_dice = 0
     status = ""
@@ -14,7 +14,7 @@ class Player(object):
     def __init__(
             self,
             name,
-            health_points, 
+            player_health_points, 
             base_dice,
             additional_dice,
             status, 
@@ -26,7 +26,7 @@ class Player(object):
     ):
 
         self.name = name
-        self.health_points = health_points
+        self.player_health_points = player_health_points
         self.base_dice = base_dice
         self.additional_dice = additional_dice
         self.status = status
