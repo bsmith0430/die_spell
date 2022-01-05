@@ -21,7 +21,7 @@ def roll_phase_input(player):
                 player.current_rolls
         )
         case "lock":
-                player.lock(
+            player.lock(
                 player.current_rolls, 
                 player.locked_dice
         )
