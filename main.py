@@ -59,8 +59,13 @@ while game_is_running:
             print(f"{player_names[player]} has won the game")
             game_is_running = False
             break
-            
+
+        while current_game_phase == "pre_roll":
+            pre_roll_phase_input(player)
         while current_game_phase == "rolling":
             roll_phase_input(player)
-            
+        while current_game_phase == "spell_building":
+            spell_building_phase_input(player)
+        while current_game_phase == "spell_casting":
+            spell_casting_phase_input(player)    
         
