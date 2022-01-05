@@ -8,12 +8,12 @@ number_of_players = int(input("How many players?: "))
 player_health_points = 30
 base_dice = 5
 additional_dice = 0
-status = "No status"
+status = "No status" # "No status", "Burned", "Shocked", "Frozen", "Vulnerable", "Poinsoned", "Pacified"
 rolls_remaining = 3
 locked_dice = []
 actions_available = []
 current_rolls = []
-current_game_phase = "rolling"
+current_game_phase = "rolling" # pre_roll, rolling, spell_building, spell_casting
 
 player_names = {}
 for _ in range(number_of_players):
@@ -24,19 +24,7 @@ for _ in range(number_of_players):
 game_is_running = True
 while game_is_running:
 
-    if keyboard.read_key() == 'esc':
-        user_input = input("Are you sure you would like to quit? (y/n): ")
-        try:
-            if user_input == "y":
-                game_is_running = False
-                print("Thanks for playing!")
-                break
-            
-            if user_input == "n":
-                continue
-        except:
-            print("Please enter a valid input.")
-
+    # Game loop
     for player in player_names:
         player = Player(
             player_names[player], 

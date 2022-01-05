@@ -32,5 +32,3 @@ def spell_building_phase_input():
 def spell_casting_phase_input():
     pass
 
-
-
